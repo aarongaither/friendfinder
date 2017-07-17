@@ -1,0 +1,23 @@
+{
+  "name": "friendfinder",
+  "version": "1.0.0",
+  "description": "week 13 HW",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aarongaither/friendfinder.git"
+  },
+  "author": "Aaron Gaither",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aarongaither/friendfinder/issues"
+  },
+  "homepage": "https://github.com/aarongaither/friendfinder#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3"
+  }
+}
