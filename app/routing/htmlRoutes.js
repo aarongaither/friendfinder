@@ -1,8 +1,8 @@
-const router = require("express").Router();
-const path = require("path");
+const router = require('express').Router();
+const questions = require('./../data/questions.js')
 
-router.get("/", (req, res) => res.sendFile(path.join(__dirname, "/../public/home.html")));
+router.get('/', (req, res) => res.render('home'));
 
-router.get("/survey", (req, res) => res.sendFile(path.join(__dirname, "/../public/survey.html")));
+router.get('/survey', (req, res) => res.render('survey', {questions,}))
 
 module.exports = router;
