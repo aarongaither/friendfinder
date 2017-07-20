@@ -2,36 +2,28 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>CodeFriend</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CodeFriends</title>
 
-	<!-- Latest compiled and minified CSS & JS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
-	<!-- Font Awesome Glyphicons -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-	<div class="container">
-		
-		<div class="jumbotron">
-			<h1 class=""><i class="fa fa-facebook-square" aria-hidden="true"></i> Code Friend</h1>
-			<hr>
-			<h2 class="">Answer a few programming questions.</h2>
-			<h2 class="">Then find the friend with whom you should be coding!</h2>
-			<br>
-		</div>
-		{{{body}}}		
-	    <footer class="footer">
-	      <div class="container">
-		        <p><a href="/api/friends">API Friends List</a></p>
-	      </div>
-	    </footer>
-
+	<div class="header">
+	    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+	        <a class="pure-menu-heading" href="/">Code Friends</a>
+	        <ul class="pure-menu-list">
+	            <li class="pure-menu-item"><a href="/" class="pure-menu-link">Home</a></li>
+	            <li class="pure-menu-item"><a href="/survey" class="pure-menu-link">Survey</a></li>
+	            <li class="pure-menu-item"><a href="/api/friends" class="pure-menu-link">All friends - API</a></li>
+	        </ul>
+	    </div>
 	</div>
-
-	
+	<div class="content-wrapper">
+		{{{body}}}
+    </div>
 </body>
 </html>

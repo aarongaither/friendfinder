@@ -1,64 +1,33 @@
-// Chosen CSS
-var config = {
-  '.chosen-select'           : {},
-  '.chosen-select-deselect'  : {allow_single_deselect:true},
-  '.chosen-select-no-single' : {disable_search_threshold:10},
-  '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
-  '.chosen-select-width'     : {width:"95%"}
-}
-for (var selector in config) {
-  $(selector).chosen(config[selector]);
+var toggleModal = function(){
+	$('#modal').toggleClass("closed");
+	$('#modal-overlay').toggleClass("closed");
 }
 
-// Capture the form inputs 
-$("#submit").on("click", function(){
+$('#close-button').on("click", function() {
+	toggleModal();
+});
 
-	// Form validation
-	function validateForm() {
-	  var isValid = true;
-	  $('.form-control').each(function() {
-	    if ( $(this).val() === '' )
-	        isValid = false;
-	  });
-
-	  $('.chosen-select').each(function() {
-
-	  	if( $(this).val() === "")
-	  		isValid = false
-	  })
-	  return isValid;
+$("#submit").on("click", function(event){
+	event.preventDefault();
+	var clearForm = function(){
+		$("#name").val('');
+		$("#photo").val('');
+		for (var i = 0; i < 10; i++) {
+			$('#q'+i).val('');
+		}
 	}
 
-	// If all required fields are filled
-	if (validateForm() == true)
-	{
-		// Create an object for the user's data
-    	var userData = {
-    		name: $("#name").val().trim(),
-    		photo: $("#photo").val().trim(),
-    		scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()]
-    	}
-
-
-    	// Grab the URL of the website
-    	var currentURL = window.location.origin;
-
-    	// AJAX post the data to the friends API. 
-    	$.post(currentURL + "/api/friends", userData, function(data){
-
-    		// Grab the result from the AJAX post so that the best match's name and photo are displayed.
-    		$("#matchName").text(data.name);
-    		$('#matchImg').attr("src", data.photo);
-
-	    	// Show the modal with the best match 
-	    	$("#resultsModal").modal('toggle');
-
-    	});
+	var userData = {
+		name: $("#name").val().trim(),
+		photo: $("#photo").val().trim(),
+		scores: [$("#q0").val(), $("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val()]
 	}
-	else
-	{
-		alert("Please fill out all fields before submitting!");
-	}
-	
-	return false;
+
+	$.post(window.location.origin + "/api/friends", userData, function(data){
+		$("#matchName").text(data.name);
+		$('#matchImg').attr("src", data.photo).attr("alt", data.name);
+    	toggleModal();
+	});
+
+	clearForm();
 });
